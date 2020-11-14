@@ -1,0 +1,52 @@
+{
+  "components": {
+    "routers": {},
+    "visualizers": {
+      "PetriSimulator": {
+        "src": "panels/PetriSimulator/PetriSimulatorPanel",
+        "title": "PetriSimulator",
+        "panel": "src/visualizers/panels/PetriSimulator",
+        "secondary": false,
+        "widget": "src/visualizers/widgets/PetriSimulator"
+      },
+      "PetriSimulator2": {
+        "src": "panels/PetriSimulator2/PetriSimulator2Panel",
+        "title": "PetriSimulator2",
+        "panel": "src/visualizers/panels/PetriSimulator2",
+        "secondary": false,
+        "widget": "src/visualizers/widgets/PetriSimulator2"
+      }
+    },
+    "plugins": {
+      "PetriInterpreter": {
+        "src": "src/plugins/PetriInterpreter",
+        "test": "test/plugins/PetriInterpreter"
+      }
+    }
+  },
+  "dependencies": {
+    "routers": {
+      "BindingsDocs": {
+        "project": "webgme-bindings",
+        "path": "node_modules/webgme-bindings/src/routers/BindingsDocs",
+        "mount": "bindings-docs"
+      }
+    },
+    "visualizers": {
+      "ICore": {
+        "src": "panels/ICore/ICorePanel",
+        "title": "ICore",
+        "panel": "src/visualizers/panels/ICore",
+        "secondary": false,
+        "widget": "src/visualizers/widgets/ICore",
+        "project": "webgme-icore"
+      }
+    },
+    "plugins": {
+      "PyCoreExecutor": {
+        "project": "webgme-icore",
+        "path": "node_modules/webgme-icore/src/plugins/PyCoreExecutor"
+      }
+    }
+  }
+}

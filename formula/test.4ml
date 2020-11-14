@@ -1,0 +1,71 @@
+domain PetriNetDomain { 	
+    Place ::= new (name: String).     
+    Transition ::= new (name: String). 
+    InputArc ::= new (plc: Place, tran: Transition).   
+    OutputArc ::= new (tran: Transition, plc: Place).
+    
+    Reachable ::= (from: Place, to: Place).     
+    Reachable(x, y) :- a is Transition, InputArc(x, a), OutputArc(a, y).  
+    Reachable(x, z) :- y is Place, Reachable(x, y), Reachable(y, z).     
+    
+    
+    isSource ::= (plc: Place).
+    isSource(p) :- p is Place, no {a | a is Place, Reachable(a, p)}.
+    isSink ::= (plc: Place).
+    isSink(p) :- p is Place, no {a | a is Place, Reachable(p, a)}.
+    onPath ::= (plc: Place).
+    onPath(p) :- a is Place, isSource(a), b is Place, isSink(b), Reachable(a, p), Reachable(p, b).
+    isolatedTrans :- count({t | t is Transition, 
+                                 count({Arc | Arc is InputArc(_,t)})<1})>0. 
+    isolatedTrans :- count({t | t is Transition, 
+                                 count({Arc | Arc is OutputArc(t,_)})<1})>0.
+    workflow :- count({ a | a is Place, isSource(a)}) = 1,
+    			count({ b | b is Place, isSink(b)}) = 1,
+                count({c | c is Place, onPath(c)}) = count({d | d is Place}) - 2,
+                no isolatedTrans.
+
+    
+    tooManyIn :- p is Place, count({arc | arc is OutputArc(_,p)})>1.
+    tooFewIn :- p is Place, count({arc | arc is OutputArc(_,p)})<1.
+    tooManyOut :- p is Place, count({arc | arc is InputArc(p,_)})>1.
+    tooFewOut :- p is Place, count({arc | arc is InputArc(p,_)})<1.
+    markedGraph :- no tooManyIn, no tooFewIn, no tooManyOut, no tooFewOut.
+
+    
+    tranWaysIn ::= (x: Transition, k: Integer).
+    tranWaysIn(x, k) :- x is Transition, k = count({ arc | arc is OutputArc(x, _)}).
+    tranWaysOut ::= (x: Transition, k: Integer).
+    tranWaysOut(x, k) :- x is Transition, k = count({ arc | arc is InputArc(_, x)}).
+    tranOneWayIn :- no { k | tranWaysIn(_, k), k>1}.
+    tranOneWayOut :- no { k | tranWaysOut(_, k), k>1}.
+    stateMachine :- tranOneWayIn, tranOneWayOut.
+
+
+    notFreeChoice :- p is Place, t is Transition, 
+                     InputArc(p,t), 
+                     count({arc | arc is InputArc(_,t)})>1,
+                     count({arc | arc is InputArc(p,_)})>1.
+    freeChoice :- no notFreeChoice.
+
+    }
+
+model M1992 of PetriNetDomain{
+  a5 is Place("a5").
+  aoZ is Place("aoZ").
+  aR is Place("aR").
+  aw is Place("aw").
+  a9 is Transition("a9").
+  aa is Transition("aa").
+  aY is Transition("aY").
+  aV is Transition("aV").
+  InputArc(aoZ, a9).
+  InputArc(aw, aa).
+  InputArc(aR, aY).
+  InputArc(aoZ, aY).
+  InputArc(aw, a9).
+  InputArc(aR, aV).
+  OutputArc(aa, a5).
+  OutputArc(aY, aw).
+  OutputArc(a9, a5).
+  OutputArc(aV, aw).
+}

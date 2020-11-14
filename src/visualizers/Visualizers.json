@@ -1,0 +1,14 @@
+[
+  {
+    "id": "ICore",
+    "title": "ICore",
+    "panel": "panels/ICore/ICorePanel",
+    "DEBUG_ONLY": false
+  },
+  {
+    "id": "PetriSimulator",
+    "title": "PetriSimulator",
+    "panel": "panels/PetriSimulator/PetriSimulatorPanel",
+    "DEBUG_ONLY": false
+  }
+]
