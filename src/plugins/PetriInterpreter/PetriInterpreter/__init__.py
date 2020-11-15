@@ -8,7 +8,6 @@ from webgme_bindings import PluginBase
 import os
 import json
 import shutil
-from mako.template import Template
 import subprocess
 
 # Setup a logger
@@ -27,6 +26,8 @@ class PetriInterpreter(PluginBase):
         root_node = self.root_node
         active_node = self.active_node
         META = self.META
+
+        Template = self.modules['mako.template']
 
         # building structured data from model
         nodes = core.load_sub_tree(active_node)
