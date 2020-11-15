@@ -1,7 +1,7 @@
 # PeNDeS
 ## Prerequisites
 
-- [NodeJS](https://nodejs.org/en/) (LTS recommended)
+- [NodeJS](https://nodejs.org/en/download/package-manager/) (LTS recommended)
 
 Verify dependency satisfaction by issuing `node --version` in the command prompt to see the current available version.
 
@@ -9,7 +9,7 @@ Verify dependency satisfaction by issuing `node --version` in the command prompt
 
 Verify dependency satisfaction with `npm --version`
 
-- [MongoDB](https://www.mongodb.com/)
+- [MongoDB](https://docs.mongodb.com/manual/installation/)
 
 After installing, start mongodb locally by running the `mongod` executable in your mongodb installation (you may need to create a `data` directory or set `--dbpath`).
 
@@ -35,4 +35,5 @@ with mongodb running locally do the following:
 
 ### Webgme-cli
 If you would like to extend this studio, download and install [webgme-cli](https://github.com/webgme/webgme-cli). This will provide a command line interface with which to manipulate webgme projects like PeNDeS.
+
 

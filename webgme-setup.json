@@ -8,13 +8,6 @@
         "panel": "src/visualizers/panels/PetriSimulator",
         "secondary": false,
         "widget": "src/visualizers/widgets/PetriSimulator"
-      },
-      "PetriSimulator2": {
-        "src": "panels/PetriSimulator2/PetriSimulator2Panel",
-        "title": "PetriSimulator2",
-        "panel": "src/visualizers/panels/PetriSimulator2",
-        "secondary": false,
-        "widget": "src/visualizers/widgets/PetriSimulator2"
       }
     },
     "plugins": {
@@ -24,8 +17,8 @@
       }
     },
     "seeds": {
-      "PetrinetBaseProject": {
-        "src": "src/seeds/PetrinetBaseProject"
+      "PetrinetSeed": {
+        "src": "src/seeds/PetrinetSeed"
       }
     }
   },
