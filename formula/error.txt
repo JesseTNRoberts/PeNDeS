@@ -1,6 +1,0 @@
-(Failed) test.4ml
-test.4ml (18, 38): The type id transition is undefined.
-test.4ml (20, 38): The type id transition is undefined.
-test.4ml (0, 0): The install operation failed
-1.28s.
-[]> 
