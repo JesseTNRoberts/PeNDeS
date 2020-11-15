@@ -22,6 +22,11 @@
         "src": "src/plugins/PetriInterpreter",
         "test": "test/plugins/PetriInterpreter"
       }
+    },
+    "seeds": {
+      "PetrinetBaseProject": {
+        "src": "src/seeds/PetrinetBaseProject"
+      }
     }
   },
   "dependencies": {
@@ -47,6 +52,7 @@
         "project": "webgme-icore",
         "path": "node_modules/webgme-icore/src/plugins/PyCoreExecutor"
       }
-    }
+    },
+    "seeds": {}
   }
 }
