@@ -50,24 +50,27 @@ class PetriInterpreter(PluginBase):
         if not core.is_type_of(active_node, META['PetriNet']):
             logger.error("Failed to find a PetriNet")
 
+        name_prefix = "_"
         #Build data for petrinet
         for node in nodes:
+            name = name_prefix + core.get_path(node).replace("/","")
             path2node[core.get_path(node)] = node
             if core.is_type_of(node, META['Place']):
-                places.append({'name': core.get_path(node).replace("/","")})
+                places.append({'name': name})
 
             elif core.is_type_of(node, META['Transition']):
-                transitions.append({'name': core.get_path(node).replace("/","")})
+                transitions.append({'name': name})
 
         for node in nodes:
             if core.is_type_of(node, META['InputArc']):
-                inputArcs.append({'src': core.get_pointer_path(node, 'src').replace("/",""),
-                                  'dst': core.get_pointer_path(node, 'dst').replace("/","")})
+                src = name_prefix + core.get_pointer_path(node, 'src').replace("/","")
+                dst = name_prefix + core.get_pointer_path(node, 'dst').replace("/","")
+                inputArcs.append({'src': src, 'dst': dst})
 
             elif core.is_type_of(node, META['OutputArc']):
-                outputArcs.append({'src': core.get_pointer_path(node, 'src').replace("/",""),
-                                   'dst': core.get_pointer_path(node, 'dst').replace("/","")})
-
+                src = name_prefix + core.get_pointer_path(node, 'src').replace("/","")
+                dst = name_prefix + core.get_pointer_path(node, 'dst').replace("/","")
+                outputArcs.append({'src': src, 'dst': dst})
 
         #Get template information
         formula_domain = core.get_attribute(active_node, 'formulaDomain')
@@ -84,15 +87,26 @@ class PetriInterpreter(PluginBase):
                                                outputArcs=outputArcs)
         logger.info('\n' + formula_code)
 
-        # go into our formula sub-directory and create a temporary folder
-        os.chdir('formula')
-        formula_file = open('formulaCaller.js', 'w+')
+        # go to formula directory to analyze petrinet
+        # don't change the names here without changing the formulaCaller.js file that is
+        # part of the petriNet Meta Object in the meta-model
+        formula_files = {'results': 'result.txt',
+                         'errors': 'error.txt',
+                         'caller': 'formulaCaller.js',
+                         'model': 'test.4ml',
+                         'directory': 'formula'}
+        os.chdir(formula_files['directory'])
+        formula_file = open(formula_files['caller'], 'w+')
         formula_file.write(formula_caller)
         formula_file.close()
 
-        formula_file = open('test.4ml', 'w+')
+        formula_file = open(formula_files['model'], 'w+')
         formula_file.write(formula_code)
         formula_file.close()
+
+        #remove the error file if it exists to use presence as error detection
+        if os.path.isfile(formula_files['errors']):
+            os.remove(formula_files['errors'])
 
         check_result = {}
         checks = ['workflow', 'markedGraph', 'freeChoice', 'stateMachine']
@@ -100,12 +114,27 @@ class PetriInterpreter(PluginBase):
             subprocess.run(['node', 'formulaCaller.js', 'M1992', 'PetriNetDomain', check],
                               stdout=subprocess.PIPE)
 
-            # check the result
-            result_file = open('result.txt', 'r')
-            result = result_file.read()
-            result_file.close()
-            check_result[check] = result.find('true') != -1
+            if os.path.isfile('result.txt'):
+                # check the result
+                result_file = open('result.txt', 'r')
+                result = result_file.read()
+                result_file.close()
+                check_result[check] = result.find('true') != -1
 
-        self.create_message(active_node, str(check_result))
+        #Deliver the results to the user
+        if os.path.isfile('error.txt'):
+            self.create_message(active_node,
+                                'There was an error with the formula model...  '+
+                                open('error.txt', 'r').read())
+        else:
+            self.create_message(active_node, str(check_result))
+
+        #cleanup
+        for filename in [formula_files['results'],
+                         formula_files['errors'],
+                         formula_files['caller'],
+                         formula_files['model']]:
+            if os.path.isfile(filename):
+                os.remove(filename)
 
 
