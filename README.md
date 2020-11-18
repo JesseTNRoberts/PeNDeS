@@ -43,7 +43,7 @@ with mongodb running locally do the following:
 
 Once you have successfully installed PeNDeS and have navigated to `http://localhost:8888` you should see the project creation interface.
 
-![Project Creation](/images/project%20creation.png){:height="700px" width="400px"}
+![Project Creation](/images/project%20creation.png){:height="300px" width="200px"}
 
 ## Development
 
