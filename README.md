@@ -59,7 +59,7 @@ If you would like to evaluate if the created petrinet falls into one of the well
 <p align="center">
   5. <img src="/images/model.png" width="48%" height="330">
   6. <img src="/images/simulator.png" width="48%" height="330">
-  7. <img src="/images/interpreter.png" width="48%" height="200">
+  7. <img src="/images/interpreter.png" width="60%" height="200">
 </p>
 
 ## Development
