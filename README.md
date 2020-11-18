@@ -39,7 +39,7 @@ with mongodb running locally do the following:
 5. `npm start` - to run the server
 6. navigate to `http://localhost:8888` to start using PeNDeS!
 
-## Get started modeling
+## Getting started 
 
 Once you have successfully installed PeNDeS and have navigated to `http://localhost:8888` you should see the project creation interface (image 1). Here you are to enter the name you would like to be assigned to your project (image 2). Next, you can select how you want to create the project. A dropdown menu allows you to choose multiple ways to initialize a project. PeNDeS has a preconfigure project seed, called PetrinetSeed, which should be chosen (image 3). After completing these steps you will see the landing page that shows a model view of 4 example petrinets (image 4).  
 
@@ -48,6 +48,18 @@ Once you have successfully installed PeNDeS and have navigated to `http://localh
   2. <img src="/images/project%20naming.png" width="48%" height="330">
   3. <img src="/images/seed.png" width="48%" height="330">
   4. <img src="/images/landing.png" width="48%" height="330">
+</p>
+
+### Creating, Simulating, and Interpreting models
+
+To create a model, either edit one of the existing petrinet models (image 5) or drag a petrinet object into the composition landing view and edit the new petrinet. Once the model has been edited to your satisfaction, you can simulate the model by choosing the simulator visualizer in the left hand panel. In the simulator the model is shown in a similar format to the model editor. However, here you can click enabled transitions and test the overall functionality. Enabled transitions are highlighted in green (image 5). 
+
+If you would like to evaluate if the created petrinet falls into one of the well studied categories (workflow, marked graph, state machine, or free choice net) click the glasses icon in the toolbar. The results are displayed directly in the simulator environment. If your model reaches a locked condition, then a message will be displayed requesting you to reload the model. This can be done by clicking the circular arrow icon in the toolbar. Finally, if you would like to be able to scroll the model, use the check box to enable scrolling.
+
+<p align="center">
+  5. <img src="/images/model.png" width="48%" height="330">
+  6. <img src="/images/simulator.png" width="48%" height="330">
+  7. <img src="/images/interpretor.png" width="96%" height="330">
 </p>
 
 ## Development
