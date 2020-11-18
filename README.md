@@ -41,7 +41,7 @@ with mongodb running locally do the following:
 
 ## Get started modeling
 
-Once you have successfully installed PeNDeS and have navigated to `http://localhost:8888` you should see the project creation interface.
+Once you have successfully installed PeNDeS and have navigated to `http://localhost:8888` you should see the project creation interface (image 1). Here you are to enter the name you would like to be assigned to your project (image 2). Next, you can select how you want to create the project. A dropdown menu allows you to choose multiple ways to initialize a project. PeNDeS has a preconfigure project seed, called PetrinetSeed, which should be chosen (image 3). After completing these steps you will see the landing page that shows a model view of 4 example petrinets (image 4).  
 
 <p align="center">
   1. <img src="/images/project%20creation.png" width="48%" height="330">
