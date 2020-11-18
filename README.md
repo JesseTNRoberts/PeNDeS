@@ -4,7 +4,9 @@ PeNDeS is a domain specific modeling language (dsml) tool used to build petrinet
 
 ## Petrinets
 
-Petrinets are 
+A petrinet is a type of directed bipartite graph. The two types of elements are places and transitions. Each place has a positive finite number of markings. Transitions with all their connected in-places (places that have outgoing connections to this transition) possessing one or more markings are said to be enabled, which means they may be fired. When a transition is fired, all the connected in-places have their markings reduced by one and all connected out-places have their markings incremented by one.
+
+Petrinets are used as a graphical modeling language used to describe process operation, similar to state machines. However, petrinets are far more expressive than state machines ie. any state machine may be encoded as a petrinet while not all petrinets can be represented as state machines. Petrinets are most often utilized to encode and study the formal characteristics of processes.
 
 ## Dependency Prerequisites  
 #### Install these before attempting to clone the repository
