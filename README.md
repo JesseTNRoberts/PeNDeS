@@ -43,7 +43,7 @@ with mongodb running locally do the following:
 
 Once you have successfully installed PeNDeS and have navigated to `http://localhost:8888` you should see the project creation interface.
 
-![Project Creation](https://github.com/jessetnroberts/pendes/images/project creation.png?raw=true)
+![Project Creation](https://github.com/JesseTNRoberts/PeNDeS/images/project creation.png?raw=true)
 
 ## Development
 
