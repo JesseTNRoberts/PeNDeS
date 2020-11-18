@@ -9,6 +9,7 @@ import os
 import json
 import shutil
 import subprocess
+from mako.template import Template
 
 # Setup a logger
 logger = logging.getLogger('PetriInterpreter')
@@ -26,8 +27,6 @@ class PetriInterpreter(PluginBase):
         root_node = self.root_node
         active_node = self.active_node
         META = self.META
-
-        Template = self.modules['mako.template']
 
         # building structured data from model
         nodes = core.load_sub_tree(active_node)

@@ -34,17 +34,25 @@ define(['ejs',
         this._el.addClass(WIDGET_CLASS);
         // Create indication header
         this._headerEl = $('<h3>');
+        this._simulationEl = $('<h6>', {id: 'simulation-disp'})
+            .append('<span>Simulator Messages-> Hover over any element to see the name.</span>');
+
         this._interpretationEl = $('<h6>', {id: 'interpretation-disp'})
-            .append('<span>Run the interpreter to classify this PetriNet...</span>');
+            .append('<span>Interpreter Messages-> Run the interpreter to classify this PetriNet...</span>');
 
         this._el.append(this._headerEl);
+        this._el.append(this._simulationEl);
         this._el.append(this._interpretationEl);
         this._headerEl.css('color', 'red');
 
     };
 
-    PetriSimulatorWidget.prototype._interpreterDisplay = function (interpretation){
-        d3.select("#interpretation-disp").text(interpretation);
+    PetriSimulatorWidget.prototype._interpreterDisplay = function (message){
+        d3.select("#interpretation-disp").text('Interpreter Messages-> ' + message);
+    }
+
+    PetriSimulatorWidget.prototype._simulatorDisplay = function (message){
+        d3.select("#simulation-disp").text('Simulator Messages-> ' + message);
     }
 
     PetriSimulatorWidget.prototype.onWidgetContainerResize = function (width, height) {
