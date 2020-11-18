@@ -46,6 +46,9 @@ Once you have successfully installed PeNDeS and have navigated to `http://localh
 <p align="center">
   1. <img src="/images/project%20creation.png" width="45%">
   2. <img src="/images/project%20naming.png" width="45%">
+</p>
+
+<p align="center">
   3. <img src="/images/seed.png" width="45%">
   4. <img src="/images/landing.png" width="45%">
 </p>
@@ -59,6 +62,9 @@ If you would like to evaluate if the created petrinet falls into one of the well
 <p align="center">
   5. <img src="/images/model.png" width="45%">
   6. <img src="/images/simulator.png" width="45%">
+</p>
+
+<p align="center">
   7. <img src="/images/interpreter.png" width="60%">
 </p>
 
