@@ -43,9 +43,11 @@ with mongodb running locally do the following:
 
 Once you have successfully installed PeNDeS and have navigated to `http://localhost:8888` you should see the project creation interface.
 
+![Project Creation](https://github.com/[jessetnroberts]/[pendes]/images/project creation.png?raw=true)
 
 ## Development
 
 - [Webgme-cli](https://github.com/webgme/webgme-cli
 If you would like to extend this studio, download and install webgme-cli. This will provide a command line interface with which to manipulate webgme projects like PeNDeS.
+
 
