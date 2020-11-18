@@ -35,7 +35,8 @@ define(['ejs',
         // Create indication header
         this._headerEl = $('<h3>');
         this._simulationEl = $('<h6>', {id: 'simulation-disp'})
-            .append('<span>Simulator Messages-> Hover over any element to see the name.</span>');
+            .append('<span>Simulator Messages-> Enabled transitions are highlighted in green. ' +
+                'Hover over any element to see the name.</span>');
 
         this._interpretationEl = $('<h6>', {id: 'interpretation-disp'})
             .append('<span>Interpreter Messages-> Run the interpreter to classify this PetriNet...</span>');
@@ -58,6 +59,15 @@ define(['ejs',
     PetriSimulatorWidget.prototype.onWidgetContainerResize = function (width, height) {
         this._logger.debug('Widget is resizing...');
     };
+
+    PetriSimulatorWidget.prototype._ModelScrollingToggle = function(){
+        var last = d3.select("#PetrinetSimulator").attr("scrolling");
+        if(last==='yes'){
+            d3.select("#PetrinetSimulator").attr("scrolling", "no");
+        } else {
+            d3.select("#PetrinetSimulator").attr("scrolling", "yes");
+        }
+    }
 
     PetriSimulatorWidget.prototype._embedSimulator = function (petriData) {
         var self = this;

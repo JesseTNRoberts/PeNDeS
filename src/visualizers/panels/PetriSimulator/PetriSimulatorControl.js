@@ -328,6 +328,18 @@ define([
         });
         this._toolbarItems.push(this.$btnSimulatorReset);
 
+        /************** Petrinet Simulator Scroll Toggle ****************/
+
+        this.$chkbxEnableScrolling = toolBar.addCheckBox({
+            title: 'Enable Model Scrolling',
+            icon: 'glyphicon glyphicon-move',
+            checked: 'false',
+            checkChangedFn: function (data, checked) {
+                self._widget._ModelScrollingToggle();
+            }
+        });
+        this._toolbarItems.push(this.$chkbxEnableScrolling);
+
         this._toolbarInitialized = true;
     };
 
