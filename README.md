@@ -1,6 +1,6 @@
 # PeNDeS
 
-PeNDeS is a domain specific modeling language (dsml) tool used to build petrinets. The modeling environment ensures that any defined petrinet conforms to the domain [rules](https://en.wikipedia.org/wiki/Petri_net) which govern petrinets while providing an easy interface with which to simulate functionality and evaluate characteristics. Specifically, PeNDeS evaluates if a petrinet can be classified as a workflow, marked graph, state machine, or free choice net. PeNDeS and the foundational software (webgme) are open source and readily extendable.
+PeNDeS (<ins>Pe</ins>tri<ins>N</ins>et <ins>De</ins>sign <ins>S</ins>tudio) is a domain specific modeling language (dsml) tool used to build petrinets. The modeling environment ensures that any defined petrinet conforms to the domain [rules](https://en.wikipedia.org/wiki/Petri_net) which govern petrinets while providing an easy interface with which to simulate functionality and evaluate characteristics. Specifically, PeNDeS evaluates if a petrinet can be classified as a workflow, marked graph, state machine, or free choice net. PeNDeS and the foundational software (webgme) are open source and readily extendable.
 
 ## Petrinets
 
